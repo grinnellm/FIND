@@ -155,7 +155,7 @@ ClipPolys <- function(stocks, land, pt, buf) {
     # Some light wrangling
     dat@data <- dat@data %>%
       mutate(
-        StatisticalArea = as.character(StatisticalArea),
+        StatisticalArea = as.character(StatArea),
         Section = as.character(Section)
       ) %>%
       dplyr::select(SAR, StatisticalArea, Section)
@@ -415,14 +415,15 @@ spawn <- read_csv(file = spawnLoc, col_types = cols(), guess_max = 10000) %>%
     Method = unique(Method),
     Eastings = unique(Eastings), Northings = unique(Northings),
     Longitude = unique(Longitude), Latitude = unique(Latitude),
-    SpawnIndex = SumNA(c(Surface, Macrocystis, Understory))
+    SpawnIndex = SumNA(c(Surface, Macrocystis, Understory)),
+    Survey = unique(Survey)
   ) %>%
   ungroup() %>%
   filter(!is.na(Eastings), !is.na(Northings)) %>%
   dplyr::select(
     Year, Region, StatisticalArea, Section, LocationCode, LocationName,
     SpawnNumber, StartDate, EndDate, Eastings, Northings, Longitude, Latitude,
-    Length, Width, Method, SpawnIndex
+    Length, Width, Method, SpawnIndex, Survey
   ) %>%
   replace_na(replace = list(Region = "Other")) %>%
   mutate(
@@ -438,6 +439,7 @@ spawn <- read_csv(file = spawnLoc, col_types = cols(), guess_max = 10000) %>%
 # Get survey time periods
 qPeriods <- spawn %>%
   mutate(Survey = factor(Survey, levels = c("Surface", "Dive"))) %>%
+  group_by(Survey) %>%
   summarise(StartDate = min(Year), EndDate = max(Year)) %>%
   ungroup()
 

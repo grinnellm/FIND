@@ -85,8 +85,8 @@ ui <- fluidPage(
         div(
           style = "display:inline-block; width:32%; vertical-align:text-top",
           selectInput(
-            inputId = "StatisticalArea", label = "Statistical area(s)",
-            choices = unique(spawn$StatArea), multiple = TRUE, size = 3,
+            inputId = "statAreas", label = "Statistical area(s)",
+            choices = unique(spawn$StatisticalArea), multiple = TRUE, size = 3,
             selectize = FALSE, selected = unique(spawn$StatisticalArea)
           )
         ),
