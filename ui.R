@@ -263,8 +263,10 @@ ui <- fluidPage(
                 "substantial differences in survey effort and method:",
                 "<ul>",
                 "<li>Surface period from",
-                paste0(qPeriods$StartDate[1], " to ", qPeriods$EndDate[1], 
-                       ", and</li>"),
+                paste0(
+                  qPeriods$StartDate[1], " to ", qPeriods$EndDate[1],
+                  ", and</li>"
+                ),
                 "<li>Dive period from",
                 paste0(qPeriods$StartDate[2], " to present,</li>"),
                 "</ul>",
@@ -279,10 +281,10 @@ ui <- fluidPage(
                 "<li>Direct estimates from 1979 to present,",
                 "</li>",
                 "</ul>",
-                "<li>The spawn index is derived from surface and dive", 
+                "<li>The spawn index is derived from surface and dive",
                 "observations of egg deposition, and includes uncertainty and",
                 "assumptions, and</li>",
-                "<li>Spawn index calculations rely on dated parameters and", 
+                "<li>Spawn index calculations rely on dated parameters and",
                 "models.</li>",
                 "</ul>"
               ))
