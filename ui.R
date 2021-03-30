@@ -85,9 +85,9 @@ ui <- fluidPage(
         div(
           style = "display:inline-block; width:32%; vertical-align:text-top",
           selectInput(
-            inputId = "statAreas", label = "Statistical area(s)",
+            inputId = "StatisticalArea", label = "Statistical area(s)",
             choices = unique(spawn$StatArea), multiple = TRUE, size = 3,
-            selectize = FALSE, selected = unique(spawn$StatArea)
+            selectize = FALSE, selected = unique(spawn$StatisticalArea)
           )
         ),
         div(
@@ -263,9 +263,10 @@ ui <- fluidPage(
                 "substantial differences in survey effort and method:",
                 "<ul>",
                 "<li>Surface period from",
-                paste0(qPeriods$Start[1], " to ", qPeriods$End[1], ", and</li>"),
+                paste0(qPeriods$StartDate[1], " to ", qPeriods$EndDate[1], 
+                       ", and</li>"),
                 "<li>Dive period from",
-                paste0(qPeriods$Start[2], " to present,</li>"),
+                paste0(qPeriods$StartDate[2], " to present,</li>"),
                 "</ul>",
                 "<li>Surface spawn surveys use two different methods to",
                 "estimate the number of egg layers:",
