@@ -30,32 +30,32 @@ ui <- fluidPage(
             # "(<a href=http://spatialreference.org/ref/sr-org/14/>WGS 1984</a>)"
           )),
           div(
-            style = "display:inline-block; width:49%",
+            style = "display:inline-block; width:100%",
+            numericInput(
+              inputId = "latitude", label = "Latitude", value = 49.21,
+              min = rangeSI$Lat[1], max = rangeSI$Lat[2], step = 0.01
+            )
+          ),
+          div(
+            style = "display:inline-block; width:100%",
             numericInput(
               inputId = "longitude", label = "Longitude", value = -123.96,
               min = rangeSI$Long[1], max = rangeSI$Long[2], step = 0.01
             )
           ),
-          div(
-            style = "display:inline-block; width:49%",
-            numericInput(
-              inputId = "latitude", label = "Latitude", value = 49.21,
-              min = rangeSI$Lat[1], max = rangeSI$Lat[2], step = 0.01
-            )
-          )
         ),
         div(
           style = "display:inline-block; width:49%",
           h2("Buffers (km)"),
           div(
-            style = "display:inline-block; width:49%",
+            style = "display:inline-block; width:100%",
             numericInput(
               inputId = "bufSpill", label = "Circle radius", value = 8,
               min = 0, step = 1
             )
           ),
           div(
-            style = "display:inline-block; width:49%",
+            style = "display:inline-block; width:100%",
             numericInput(
               inputId = "bufMap", label = "Map edge", value = 10, min = 1,
               step = 1
