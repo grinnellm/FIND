@@ -276,19 +276,6 @@ server <- function(input, output) {
     return(res)
   })
 
-  # # Use mouse hover to select points (fewer details)
-  # output$spawnHover <- renderPrint( {
-  #   if( !is.null(input$plotHover) ) {
-  #     hover=input$plotHover
-  #     dist <- sqrt((hover$x-spawn$Eastings)^2+(hover$y-spawn$Northings)^2)
-  #     # cat("Location")
-  #     if(min(dist) < 3)
-  #       spawn$LocationName[which.min(dist)]
-  #
-  #   }
-  # }
-  # )
-
   # # Reset all inputs
   # observeEvent( input$resetAll, reset("form") )
 } # End server
