@@ -254,7 +254,7 @@ CropSpawn <- function(dat, yrs, ext, grp, reg, sa, sec) {
     mutate(Year = as.integer(Year)) %>%
     dplyr::select(
       Year, Region, StatisticalArea, Section, LocationCode, LocationName,
-      SpawnNumber, Eastings, Northings, Longitude, Latitude, StartDate, EndDate,
+      SpawnNumber, Eastings, Northings, Latitude, Longitude, StartDate, EndDate,
       Length, Width, Method, SpawnIndex
     ) %>%
     arrange(Year, Region, StatisticalArea, Section, LocationCode)
@@ -267,7 +267,7 @@ CropSpawn <- function(dat, yrs, ext, grp, reg, sa, sec) {
       summarise(
         Number = n(),
         Eastings = unique(Eastings), Northings = unique(Northings),
-        Longitude = unique(Longitude), Latitude = unique(Latitude),
+        Latitude = unique(Latitude), Longitude = unique(Longitude),
         StartDate = min(StartDate, na.rm = TRUE),
         EndDate = max(End, na.rm = TRUE),
         Length = MeanNA(Length), Width = MeanNA(Width),
@@ -332,7 +332,7 @@ WrangleDT <- function(dat, input, optPageLen, optDom, optNoData) {
         language = list(zeroRecords = optNoData)
       )) %>%
       formatRound(
-        columns = c("Mean spawn index (t)", "Longitude", "Latitude"),
+        columns = c("Mean spawn index (t)", "Latitude", "Longitude"),
         digits = 3
       ) %>%
       formatRound(columns = c("Mean length (m)", "Mean width (m)"), digits = 0)
@@ -349,7 +349,7 @@ WrangleDT <- function(dat, input, optPageLen, optDom, optNoData) {
         language = list(zeroRecords = optNoData)
       )) %>%
       formatRound(
-        columns = c("Spawn index (t)", "Longitude", "Latitude"), digits = 3
+        columns = c("Spawn index (t)", "Latitude", "Longitude"), digits = 3
       ) %>%
       formatRound(columns = c("Length (m)", "Width (m)"), digits = 0)
   } # End if not grouping by location
@@ -414,7 +414,7 @@ spawn <- read_csv(file = spawnLoc, col_types = cols(), guess_max = 10000) %>%
     Length = unique(Length), Width = unique(Width),
     Method = unique(Method),
     Eastings = unique(Eastings), Northings = unique(Northings),
-    Longitude = unique(Longitude), Latitude = unique(Latitude),
+    Latitude = unique(Latitude), Longitude = unique(Longitude),
     SpawnIndex = SumNA(c(Surface, Macrocystis, Understory)),
     Survey = unique(Survey)
   ) %>%
@@ -422,7 +422,7 @@ spawn <- read_csv(file = spawnLoc, col_types = cols(), guess_max = 10000) %>%
   filter(!is.na(Eastings), !is.na(Northings)) %>%
   dplyr::select(
     Year, Region, StatisticalArea, Section, LocationCode, LocationName,
-    SpawnNumber, StartDate, EndDate, Eastings, Northings, Longitude, Latitude,
+    SpawnNumber, StartDate, EndDate, Eastings, Northings, Latitude, Longitude,
     Length, Width, Method, SpawnIndex, Survey
   ) %>%
   replace_na(replace = list(Region = "Other")) %>%
@@ -445,8 +445,8 @@ qPeriods <- spawn %>%
 
 # Range of longitude and latitude in spawn data
 rangeSI <- list(
-  Long = round(range(spawn$Longitude, na.rm = TRUE), digits = 2),
-  Lat = round(range(spawn$Latitude, na.rm = TRUE), digits = 2)
+  Lat = round(range(spawn$Latitude, na.rm = TRUE), digits = 2),
+  Long = round(range(spawn$Longitude, na.rm = TRUE), digits = 2)
 )
 
 # Load the Section shapefile (has Statistical Areas and Regions)
