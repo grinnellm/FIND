@@ -9,7 +9,7 @@
 # Code name:    FIND (FIND Is Not Difficult)
 # Version:      1.0
 # Date started: Jan 08, 2019
-# Date edited:  Apr 22, 2020
+# Date edited:  May 13, 2021
 #
 # Overview:
 # Show herring spawn events within a given distance from a point.
