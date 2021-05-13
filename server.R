@@ -184,15 +184,6 @@ server <- function(input, output) {
         )
     } # End if showing location names
 
-
-    # TODO Working on a way to add second axes with Longitude and Latitude
-    # fun <- Vectorize(function( x, dat=spawnSub() ) {
-    #   res <- dat %>%
-    #     select( Longitude )
-    #   # res <- x/2000 + sqrt(x/2000)
-    #   return( res )
-    # })
-
     # Get number of unique years
     nYrs <- length(unique(input$yrRange))
 
