@@ -269,7 +269,7 @@ CropSpawn <- function(dat, yrs, ext, grp, reg, sa, sec) {
         Eastings = unique(Eastings), Northings = unique(Northings),
         Latitude = unique(Latitude), Longitude = unique(Longitude),
         StartDate = min(StartDate, na.rm = TRUE),
-        EndDate = max(End, na.rm = TRUE),
+        EndDate = max(EndDate, na.rm = TRUE),
         Length = MeanNA(Length), Width = MeanNA(Width),
         Method = ifelse(length(unique(Method)) > 1, "Various", Method),
         SpawnIndex = MeanNA(SpawnIndex)
