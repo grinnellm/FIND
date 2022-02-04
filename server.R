@@ -229,21 +229,21 @@ server <- function(input, output) {
   # Save data (spawn index; if download requested)
   output$downloadTable <- downloadHandler(
     filename = "SpawnData.csv",
-    content = function(file) write_csv(x = spawnSub(), path = file),
+    content = function(file) write_csv(x = spawnSub(), file = file),
     contentType = "text/csv"
   )
 
   # Save herring section polygons
   output$downloadSections <- downloadHandler(
     filename = "SectionPolygons.csv",
-    content = function(file) write_csv(x = shapesSub()$secDF, path = file),
+    content = function(file) write_csv(x = shapesSub()$secDF, file = file),
     contentType = "text/csv"
   )
 
   # Save land polygons
   output$downloadLand <- downloadHandler(
     filename = "LandPolygons.csv",
-    content = function(file) write_csv(x = shapesSub()$landDF, path = file),
+    content = function(file) write_csv(x = shapesSub()$landDF, file = file),
     contentType = "text/csv"
   )
 
