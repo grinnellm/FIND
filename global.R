@@ -245,8 +245,9 @@ CropSpawn <- function(dat, yrs, ext, grp, reg, sa, sec) {
   # Clip to extent
   datSP <- crop(x = datSP, y = ext)
   # Make a data frame
-  dat <- data.frame(datSP) %>%
-    as_tibble()
+  dat <- as.data.frame(datSP, spatial = TRUE) %>%
+    as_tibble() %>%
+    rename(Eastings = x, Northings = y)
   # Error if all the spawn data are cropped
   if (nrow(dat) < 1) stop("No spawn data in this area.", call. = FALSE)
   # Light wrangling
