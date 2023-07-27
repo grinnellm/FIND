@@ -361,7 +361,7 @@ ui <- fluidPage(
             "<a href=mailto:Matthew.Thompson@dfo-mpo.gc.ca@dfo-mpo.gc.ca>Matt",
             "Thompson</a>,",
             "DFO Science, Pacific Biological Station.",
-            "Contact Matt Grinnellfor questions regarding this App."
+            "Contact Matt Grinnell for questions regarding this App."
           )),
           br(),
           img(src = "HerringDFO.jpg", style = "width:100%"),
