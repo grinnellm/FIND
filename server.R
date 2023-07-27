@@ -95,7 +95,7 @@ server <- function(input, output) {
       # Update the map
       hMap <- hMap +
         geom_path(
-          data = shapesSub()$secDF, aes(group = Section), size = 0.25,
+          data = shapesSub()$secDF, aes(group = Section), linewidth = 0.25,
           colour = "black"
         )
     } # End if showing sections
@@ -119,7 +119,7 @@ server <- function(input, output) {
       # Update the map
       hMap <- hMap +
         geom_path(
-          data = shapesSub()$regDF, aes(group = Region), size = 1,
+          data = shapesSub()$regDF, aes(group = Region), linewidth = 1,
           colour = "black"
         )
     } # End if showing SARs
@@ -135,7 +135,7 @@ server <- function(input, output) {
     if ("circ" %in% input$location) {
       # Update the map
       hMap <- hMap +
-        geom_path(data = circDF(), colour = "red", size = 0.25)
+        geom_path(data = circDF(), colour = "red", linewidth = 0.25)
     } # End if showing the circle
 
     # If aggregating by location
