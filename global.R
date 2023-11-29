@@ -20,9 +20,8 @@ UsePackages <- function(pkgs, locn = "https://cran.rstudio.com/") {
 
 # Make packages available ("shinyjs" "plotly")
 UsePackages(pkgs = c(
-  "tidyverse", "rgeos", "rgdal", "raster", "shinycssloaders", "viridis",
-  "scales", "DT", "maptools", "shiny", "ggrepel", "ggspatial", "lubridate", 
-  "sf", "devtools"
+  "tidyverse", "raster", "shinycssloaders", "viridis", "scales", "DT",
+  "maptools", "shiny", "ggrepel", "ggspatial", "lubridate", "sf", "devtools"
 ))
 
 # Suppress summarise info
@@ -169,11 +168,15 @@ ClipPolys <- function(stocks, land, pt, buf) {
   # Project to BC
   secBC <- spTransform(x = secBC, CRSobj = CRS(crsOut))
   # Get a buffer around the point in question
-  buff <- gBuffer(spgeom = pt, width = buf, byid = FALSE)
-  # Calculate the extent
-  extBuff <- bbox(buff)
+  extBuff <- pt %>%
+    as("sf") %>%
+    st_buffer(dist = buf) %>%
+    st_bbox(buff)
   # Convert the extent to a table
-  extDF <- tibble(Eastings = extBuff[1, ], Northings = extBuff[2, ])
+  extDF <- tibble(
+    Eastings = c(extBuff$xmin, extBuff$xmax),
+    Northings = c(extBuff$ymin, extBuff$ymax)
+    )
   # Determine x:y aspect ration (for plotting)
   xyRatio <- diff(extDF$Eastings) / diff(extDF$Northings)
   # Crop the sections
@@ -183,11 +186,16 @@ ClipPolys <- function(stocks, land, pt, buf) {
     stop("The event is outside the study area.", call. = FALSE)
   }
   # Determine section centroids
-  secCent <- gCentroid(spgeom = secBC, byid = TRUE)
+  secCent <- secBC %>%
+    as("sf") %>%
+    st_centroid()
+  # Extract coordinates
+  secCentCoords <- st_coordinates(secCent)
   # Convert to data frame
   secCentDF <- secCent %>%
     as_tibble() %>%
-    rename(Eastings = x, Northings = y) %>%
+    select(-geometry) %>%
+    mutate(Eastings = secCentCoords[, 1], Northings = secCentCoords[, 2]) %>%
     mutate(Section = formatC(secBC$Section, width = 3, flag = "0")) %>%
     arrange(Section)
   # Convert to data frame and select stat areas in question
