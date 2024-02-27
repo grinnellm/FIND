@@ -212,21 +212,22 @@ ClipPolys <- function(stocks, land, pt, buf) {
     fortify(region = "id") %>%
     rename(Eastings = long, Northings = lat) %>%
     as_tibble()
-  # Dissolve to region
-  regSPDF <- aggregate(
-    x = secBC, by = list(Temp = secBC$SAR), FUN = unique, dissolve = TRUE
-  )
-  # Remove non-SAR areas
-  regSPDF <- regSPDF[regSPDF@data$SAR != -1, ]
-  # Convert to data frame
-  if(nrow(regSPDF@data) >=1) {
-    regDF <- regSPDF %>%
-    fortify(region = "SAR") %>%
-    rename(Eastings = long, Northings = lat, Region = group) %>%
-    as_tibble()
-  } else {
+  # TODO: Enable this when the spatial packages are updated
+  # # Dissolve to region
+  # regSPDF <- aggregate(
+  #   x = secBC, by = list(Temp = secBC$SAR), FUN = unique, dissolve = TRUE
+  # )
+  # # Remove non-SAR areas
+  # regSPDF <- regSPDF[regSPDF@data$SAR != -1, ]
+  # # Convert to data frame
+  # if(nrow(regSPDF@data) >=1) {
+  #   regDF <- regSPDF %>%
+  #   fortify(region = "SAR") %>%
+  #   rename(Eastings = long, Northings = lat, Region = group) %>%
+  #   as_tibble()
+  # } else {
     regDF <- NULL
-  }
+  # }
   # Build a list to return
   res <- list(
     secDF = secDF, secCentDF = secCentDF, landDF = landDF, extDF = extDF,
