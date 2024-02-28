@@ -1,4 +1,4 @@
-# Find Pacific Herring spawn sites
+# Find Pacific Herring spawns
 
 Find Pacific Herring spawn sites in a given area.
 In this analysis, we summarise spawns by year and Location in tonnes (t).
