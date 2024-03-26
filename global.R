@@ -21,7 +21,8 @@ UsePackages <- function(pkgs, locn = "https://cran.rstudio.com/") {
 # Make packages available ("shinyjs" "plotly")
 UsePackages(pkgs = c(
   "tidyverse", "raster", "shinycssloaders", "viridis", "scales", "DT",
-  "maptools", "shiny", "ggrepel", "ggspatial", "lubridate", "sf", "devtools"
+  "maptools", "shiny", "ggrepel", "ggspatial", "lubridate", "sf", "devtools",
+  "SpawnIndex"
 ))
 
 # Suppress summarise info
@@ -422,7 +423,8 @@ spawn <- read_csv(file = spawnLoc, col_types = cols(), guess_max = 10000) %>%
     StartDate = yday(StartDate), EndDate = yday(EndDate),
     StatisticalArea = formatC(StatisticalArea, width = 2, format = "d",
                               flag = "0"),
-    Section = formatC(Section, width = 3, format = "d", flag = "0")
+    Section = formatC(Section, width = 3, format = "d", flag = "0"),
+    Survey = ifelse(Year < pars$years$dive, "Surface", "Dive")
   ) %>%
   group_by(
     Year, Region, StatisticalArea, Section, LocationCode, LocationName,
