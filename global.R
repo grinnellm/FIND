@@ -77,9 +77,9 @@ myTheme <- theme(
 ##### References #####
 
 # Spawn index technical report
-GrinnellEtal <- list(
-  link = "https://github.com/grinnellm/SpawnIndex/blob/master/tr/Draft.pdf",
-  text = "Grinnell et al. In prep."
+Grinnell2023 <- list(
+  link = "https://science-catalogue.canada.ca/record=b4121678~S6",
+  text = "Grinnell et al. 2023"
 )
 
 # GSHHS polygon

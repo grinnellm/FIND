@@ -9,8 +9,7 @@ For more information on Pacific Herring spawn data, contact
 [Matthew Grinnell](mailto:Matthew.Grinnell@dfo-mpo.gc.ca), or
 [Matt Thompson](mailto:Matthew.Thompson@dfo-mpo.gc.ca),
 DFO Science, Pacific Biological Station.
-Grinnell et al.
-([In prep.](https://github.com/grinnellm/HerringSpawnDocumentation/blob/master/SpawnIndexTechnicalReport.pdf))
+([Grinnell et al. 2023](https://science-catalogue.canada.ca/record=b4121678~S6))
 has details on how we calculate the Pacific Herring spawn index.
 Note that the 'spawn index' is not scaled by the spawn survey scaling parameter *q*
 ([CSAS 2018](http://www.dfo-mpo.gc.ca/csas-sccs/Publications/SAR-AS/2018/2018_002-eng.html));
