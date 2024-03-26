@@ -409,6 +409,15 @@ MeanNA <- function(x, omitNA = TRUE) {
 
 # Load spawn data, and aggregate by location code
 spawn <- read_csv(file = spawnLoc, col_types = cols(), guess_max = 10000) %>%
+  # spawn <- read_csv(file = paste(
+  #   "https://pacgis01.dfo-mpo.gc.ca", "FGPPublic",
+  #   "Pacific_Herring_Spawn_Index_Data",
+  #   "Pacific_herring_spawn_index_data_EN.csv",
+  #   sep = "/"
+  # ),
+  # col_types = cols(),
+  # guess_max = 10000
+  # ) %>%
   mutate(
     StartDate = yday(StartDate), EndDate = yday(EndDate),
     StatisticalArea = formatC(StatisticalArea, width = 2, format = "d",
