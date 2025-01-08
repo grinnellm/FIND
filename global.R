@@ -20,8 +20,8 @@ UsePackages <- function(pkgs, locn = "https://cran.rstudio.com/") {
 
 # Make packages available ("shinyjs" "plotly")
 UsePackages(pkgs = c(
-  "tidyverse", "raster", "shinycssloaders", "viridis", "scales", "DT",
-  "maptools", "shiny", "ggrepel", "ggspatial", "lubridate", "sf", "devtools",
+  "tidyverse", "raster", "shinycssloaders", "viridis", "scales", "DT", "shiny",
+  "ggrepel", "ggspatial", "lubridate", "sf", "devtools", "maptools", 
   "SpawnIndex"
 ))
 
